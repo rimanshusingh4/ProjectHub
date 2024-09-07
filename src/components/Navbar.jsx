@@ -1,7 +1,6 @@
 import React from 'react'
 import { BsSearch } from "react-icons/bs";
 
-
 function Navbar() {
   return (
     <>
@@ -17,10 +16,10 @@ function Navbar() {
             
             <div className='login-cart w-1/3 flex justify-around items-center'>
                 <div>
-                    <button className='border-2 p-3 px-12 rounded-full'>Login</button>
+                    <button className='border-2 p-3 px-12 rounded-full hover:bg-cyan-700 hover:text-white'>Login</button>
                 </div>
                 <div>
-                    <button className='border-2 p-3  px-12 rounded-full'>SignUp</button>
+                    <button className='border-2 p-3  px-12 rounded-full hover:bg-cyan-700 hover:text-white'>SignUp</button>
                 </div>
             </div>
         </div>
