@@ -1,7 +1,6 @@
 import React from 'react'
 import { BsSearch } from "react-icons/bs";
 
-
 function Navbar() {
   return (
     <>
@@ -27,5 +26,4 @@ function Navbar() {
     </>
   )
 }
-
 export default Navbar
