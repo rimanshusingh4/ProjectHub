@@ -4,7 +4,7 @@ import { BsSearch } from "react-icons/bs";
 function Navbar() {
   return (
     <>
-        <div className='w-full h-20 border flex'>
+        <div className='w-full h-20 flex'>
             <div className='logo w-1/4 flex justify-center items-center '>
                 <h1 className='text-4xl font-thin text-cyan-700 cursor-pointer'>Project Hub</h1>
             </div>
