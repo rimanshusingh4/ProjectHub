@@ -3,7 +3,7 @@ import ProjectImg from '../assets/Project.jpg'
 function Cards() {
   return (
     <>
-        <div className='w-1/4 flex flex-col h-auto border-4 rounded-3xl m-4 shadow-xl'>
+        <div className='w-2/6 flex flex-col h-auto border-4 rounded-3xl m-4 shadow-xl'>
             <div className='flex-grow flex items-center justify-center'>
                 <div className='w-72 m-4 shadow-2xl'>
                     <img src={ProjectImg} alt='Project'/>
@@ -19,6 +19,7 @@ function Cards() {
                 <button className='p-4 bg-black rounded-3xl w-24 text-white'>Visit </button>
             </div>
         </div>
+
     </>
   )
 }
