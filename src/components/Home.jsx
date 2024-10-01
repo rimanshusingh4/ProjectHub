@@ -17,9 +17,13 @@ function Home() {
                     </p>
                 </div>
             </div>
-
-            <div className='cards w-4/5 h-auto border-2 border-red-700'>
+            <hr/>
+            <div className='cards flex flex-wrap w-full justify-around h-auto'>
                 <Cards/>
+                <Cards/>
+                <Cards/>
+                <Cards/>
+
             </div>
 
             <div className='flex w-3/4 justify-start items-start'>
