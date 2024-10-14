@@ -1,14 +1,15 @@
 import React from 'react'
+import Logo from '../../public/logo.png'
 import { NavLink } from 'react-router-dom';
 import { BsSearch } from "react-icons/bs";
 
 function Navbar() {
   return (
     <>
-        <div className='w-full h-20 flex border-y'>
+        <div className='w-full h-20 flex border-y bg-[#467688]'>
             <div className='logo w-1/4 flex justify-center items-center '>
             <NavLink to="/">
-                <h1 className='text-4xl font-thin text-cyan-700 cursor-pointer'>Project Hub</h1>
+                <img className='h-20' src={Logo} fill alt='Logo image' />
             </NavLink>
             </div>
 
@@ -19,13 +20,18 @@ function Navbar() {
             
             <div className='login-cart w-1/3 flex justify-around items-center'>
                 <div>
-                    <NavLink to="/auth/login">
+                    <NavLink to="/login">
                         <button className='border-2 p-3 px-12 rounded-full'>Login</button>
                     </NavLink>
                 </div>
                 <div>
-                    <NavLink to="/auth/register">
+                    <NavLink to="/register">
                         <button className='border-2 p-3  px-12 rounded-full'>SignUp</button>
+                    </NavLink>
+                </div>
+                <div>
+                    <NavLink to="/admin">
+                        <button className='border-2 p-3  px-12 rounded-full'>Admin</button>
                     </NavLink>
                 </div>
             </div>

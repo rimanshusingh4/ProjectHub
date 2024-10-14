@@ -1,38 +1,30 @@
 import './App.css'
+import Home from './components/Home'
 import Navbar from './components/Navbar'
 import { Outlet, Route, Routes } from 'react-router-dom'
 import Login from './pages/Login'
 import Register from './pages/Register'
-import Layout from './components/auth/Layout'
-import AdminLayout from './components/admin-view/Layout.jsx'
-import AdminDashboard from './pages/admin/dashboard.jsx'
-import AdminProducts from './pages/admin/products.jsx'
-import AdminOrders from './pages/admin/orders.jsx'
-import ShoppingLayout from './components/shopping-view/Layout.jsx'
+import Admin from './pages/admin/admin'
+import AdminLogin from './pages/admin/adminLogin'
+import AdminRegister from './pages/admin/adminRegister'
+import AdminForm from './pages/admin/adminForm'
 import NotFound from './pages/NotFound'
-import Home from './components/Home.jsx'
-
-
 
 function App() {
 
   return (
-    <div className='flex flex-col overflow-hidden bg-white'>
+    <div className='flex flex-col h-full w-full overflow-hidden bg-white border'>
       <Navbar/>
       <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/auth' element={<Layout/>}>
-          <Route path='login' element={<Login/>}/>
-          <Route path='register' element={<Register/>}/>
-        </Route>
-        <Route path='/admin' element={<AdminLayout/>}>
-          <Route path='dashboard' element={<AdminDashboard/>}/>
-          <Route path='products' element={<AdminProducts/>}/>
-          <Route path='orders' element={<AdminOrders/>}/>
-        </Route>
-        <Route path='/shop' element={<ShoppingLayout/>}/>
         <Route path='*' element={<NotFound/>}/>
-        <Route/>
+        <Route path='/' element={<Home/>} />
+        <Route path='login' element={<Login/>} />
+        <Route path='register' element={<Register/>} />
+        <Route path='admin' element={<Admin/>}>
+          <Route path='adminForm' element={<AdminForm/>} />
+          <Route path='adminLogin' element={<AdminLogin/>}/>
+          <Route path='adminRegister' element={<AdminRegister/>}/>
+        </Route>
       </Routes>
     </div>
   )

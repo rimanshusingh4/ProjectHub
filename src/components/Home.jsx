@@ -5,7 +5,7 @@ import Cards from './Cards'
 function Home() {
   return (
     <>
-        <div className='w-full h-auto flex flex-col items-center'>
+        <div className='w-full h-auto flex flex-col items-center bg-slate-400'>
             <div className='content w-4/5 h-auto my-12  flex flex-col justify-center bg-gradient-to-r from-transparent from-10% via-teal-200 via-50% to-transparent to-90%'>
                 <h1 className='text-3xl font-extralight p-8 text-center'>Welcome to <span className='font-semibold  text-cyan-700 '>ProjectHub</span> - Your One-Stop Shop for College Projects!</h1>
                 <div className='flex flex-col text-center'>
