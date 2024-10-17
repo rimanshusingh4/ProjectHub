@@ -9,7 +9,7 @@ function Navbar() {
         <div className='w-full h-20 flex border-y bg-[#467688]'>
             <div className='logo w-1/4 flex justify-center items-center '>
             <NavLink to="/">
-                <img className='h-20' src={Logo} fill alt='Logo image' />
+                <img className='h-20' src={Logo}  alt='Logo image' />
             </NavLink>
             </div>
 
@@ -27,6 +27,11 @@ function Navbar() {
                 <div>
                     <NavLink to="/register">
                         <button className='border-2 p-3  px-12 rounded-full'>SignUp</button>
+                    </NavLink>
+                </div>
+                <div>
+                    <NavLink to="/logout">
+                        <button className='border-2 p-3  px-12 rounded-full'>Logout</button>
                     </NavLink>
                 </div>
                 <div>

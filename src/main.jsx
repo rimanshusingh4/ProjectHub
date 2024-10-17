@@ -3,16 +3,19 @@ import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { BrowserRouter, Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
-import { Provider } from 'react-redux'
-import store from './store/store.js'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import { AuthProvider } from './store/store.jsx'
+
 
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </BrowserRouter>
-  </StrictMode>,
+  <AuthProvider>
+    <StrictMode>
+      <BrowserRouter>
+          <App />
+          <ToastContainer/>
+      </BrowserRouter>
+    </StrictMode>,
+  </AuthProvider>
 )

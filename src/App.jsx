@@ -1,7 +1,7 @@
 import './App.css'
 import Home from './components/Home'
 import Navbar from './components/Navbar'
-import { Outlet, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Admin from './pages/admin/admin'
@@ -9,6 +9,7 @@ import AdminLogin from './pages/admin/adminLogin'
 import AdminRegister from './pages/admin/adminRegister'
 import AdminForm from './pages/admin/adminForm'
 import NotFound from './pages/NotFound'
+import Logout from './pages/Logout'
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
           <Route path='adminLogin' element={<AdminLogin/>}/>
           <Route path='adminRegister' element={<AdminRegister/>}/>
         </Route>
+        <Route path='logout' element={<Logout/>}/>
       </Routes>
     </div>
   )

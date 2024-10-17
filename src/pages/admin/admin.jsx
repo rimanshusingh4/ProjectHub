@@ -3,7 +3,7 @@ import { Link, Outlet } from 'react-router-dom'
 function admin() {
   return (
     <div>
-        <div className='flex justify-center items-center flex-col h-full w-full bg-black text-white'>
+        <div className='flex justify-center items-center flex-col h-full w-full bg-black'>
             <h1 className='text-5xl font-semibold p-16 ml-12 text-[#467688]'>Admin View...</h1>
             <div className=' flex flex-col justify-center items-center p-20 text-white bg-slate-800 rounded-sm mx-20'>
                 <h1 className='text-2xl font-semibold p-2 ml-12'>Hi, this is admin view and if you want to become an Admin for post your Project and Become a seller.</h1>
