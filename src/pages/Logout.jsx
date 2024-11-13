@@ -4,7 +4,7 @@ import { useAuth } from '@/store/store';
 import axios from 'axios';
 
 function Logout() {
-    const navigate = useNavigate();
+    const Navigate = useNavigate();
     const { logoutUser } = useAuth();
 
     useEffect(() => {
@@ -14,17 +14,17 @@ function Logout() {
                     withCredentials: true // Important: allows cookies to be sent/received
                 });
                 
-                console.log(response.data);
+                // console.log(response.data);
             } catch (error) {
                 console.log("Error during logout:", error);
             }
 
             logoutUser(); // Clear local state
-            navigate("/login"); // Redirect after logout
+            Navigate("/login"); // Redirect after logout
         }
 
         logout();
-    }, [logoutUser, navigate]); // Add dependencies to the effect
+    }, [logoutUser, Navigate]); // Add dependencies to the effect
 
     return (
         <h1>Logging out...</h1>

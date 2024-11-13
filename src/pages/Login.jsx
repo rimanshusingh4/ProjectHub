@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '@/store/store'
-
+import Cookies from 'js-cookie';
 
 function Login() {
   const Navigate = useNavigate();
@@ -12,32 +12,38 @@ function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleLogin = async()=>{
-    if(!email) toast.warning("Please, Enter Email!",{autoClose: 1500})
-    else if(password.length < 8) toast.warning("Please, Enter Password!", {autoClose: 1500})
-    else{
+  const handleLogin = async () => {
+    if (!email) {
+      toast.warning("Please, Enter Email!", { autoClose: 1500 });
+    } else if (password.length < 8) {
+      toast.warning("Please, Enter Password!", { autoClose: 1500 });
+    } else {
       try {
-        const res = await axios.post('http://localhost:4004/api/auth/login',{
-          email,
-          password,
-        })
-        if(res.data.ok) toast.success(`${res.data.role} Login Successfully!`, {autoClose: 1500})
-        setTimeout(() => {
-          Navigate('/')
-        }, 2000);
-        storeToken(res.data.token);
-        console.log("Response from admin login",res)
-      } 
-      catch (error) {
-        console.log(error)
-        if(error.status === 404) toast.error("User not Found with this email", {autoClose: 1500})
-        else if(error.status === 403) toast.error("Incorrect Password", {autoClose: 1500})
-        else{
-          toast.error("Something wrong, Try Again", {autoClose: 1500})
+        const res = await axios.post(
+          "http://localhost:4004/api/auth/login",
+          { email, password },
+          { withCredentials: true } // Allow cookies to be sent with this request
+        );
+
+        if (res.data.ok) {
+          toast.success(`${res.data.role} Login Successfully!`, { autoClose: 1500 });
+          storeToken(); // Update login state
+          setTimeout(() => {
+            Navigate("/");
+          }, 2000);
+        }
+      } catch (error) {
+        console.log(error);
+        if (error.response && error.response.status === 404) {
+          toast.error("User not found with this email", { autoClose: 1500 });
+        } else if (error.response && error.response.status === 403) {
+          toast.error("Incorrect password", { autoClose: 1500 });
+        } else {
+          toast.error("OOP's Network issue, try again in a minute", { autoClose: 2500 });
         }
       }
     }
-}
+  };
   return (
     <>
       <div className='bg-black h-screen w-full text-white flex flex-col justify-center items-center'>

@@ -10,6 +10,10 @@ import AdminRegister from './pages/admin/adminRegister'
 import AdminForm from './pages/admin/adminForm'
 import NotFound from './pages/NotFound'
 import Logout from './pages/Logout'
+import axios from "axios";
+
+// Configure axios to always send cookies in requests
+axios.defaults.withCredentials = true;
 
 function App() {
 
