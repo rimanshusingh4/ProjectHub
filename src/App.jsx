@@ -11,14 +11,28 @@ import AdminForm from './pages/admin/adminForm'
 import NotFound from './pages/NotFound'
 import Logout from './pages/Logout'
 import axios from "axios";
+import Dashboard from './pages/admin/dashboard'
+import AdminProfile from './pages/admin/adminProfile'
+import Project from './pages/admin/projects'
+import { useEffect } from 'react'
 
 // Configure axios to always send cookies in requests
 axios.defaults.withCredentials = true;
 
 function App() {
+  useEffect(() => {
+    const noSelectElements =
+            document.querySelectorAll(".no-select");
+        noSelectElements.forEach((element) => {
+            element.style.webkitUserSelect = "none";
+            element.style.mozUserSelect = "none";
+            element.style.msUserSelect = "none";
+            element.style.userSelect = "none";
+        });
+  })
 
   return (
-    <div className='flex flex-col h-full w-full overflow-hidden bg-white border'>
+    <div className='no-select flex flex-col h-full w-full overflow-hidden bg-white border'>
       <Navbar/>
       <Routes>
         <Route path='*' element={<NotFound/>}/>
@@ -29,6 +43,9 @@ function App() {
           <Route path='adminForm' element={<AdminForm/>} />
           <Route path='adminLogin' element={<AdminLogin/>}/>
           <Route path='adminRegister' element={<AdminRegister/>}/>
+          <Route path='dashboard' element={<Dashboard/>} />
+          <Route path='profile' element={<AdminProfile/>} />
+          <Route path='project' element={<Project/>}/>
         </Route>
         <Route path='logout' element={<Logout/>}/>
       </Routes>

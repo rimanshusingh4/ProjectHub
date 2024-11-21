@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '@/store/store'
-import Cookies from 'js-cookie';
 
 function Login() {
   const Navigate = useNavigate();
-  const {storeToken} = useAuth();
+  const {storeToken, storeRole} = useAuth();
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -24,13 +23,19 @@ function Login() {
           { email, password },
           { withCredentials: true } // Allow cookies to be sent with this request
         );
-
+        console.log(res)
         if (res.data.ok) {
           toast.success(`${res.data.role} Login Successfully!`, { autoClose: 1500 });
           storeToken(); // Update login state
-          setTimeout(() => {
-            Navigate("/");
-          }, 2000);
+          if(res.data.role === 'admin'){
+            storeRole();
+            Navigate('/admin');
+          }else{
+              setTimeout(() => {
+                Navigate("/");
+              }, 2000);
+          }
+          
         }
       } catch (error) {
         console.log(error);
@@ -46,11 +51,11 @@ function Login() {
   };
   return (
     <>
-      <div className='bg-black h-screen w-full text-white flex flex-col justify-center items-center'>
-        <div className='text-white p-8 text-2xl font-medium font-mono'>
+      <div className=' h-screen w-full flex flex-col justify-center items-center'>
+        <div className='p-8 text-2xl font-medium font-mono'>
           <h1>Login View</h1>
         </div>
-        <div className='h-auto w-1/4 border rounded-lg'>
+        <div className=' w-1/4 rounded-lg bg-amber-300 text-black'>
           <div className='flex flex-col justify-start items-start p-4'>
             <h1 className='text-lg font-semibold font-mono'>Login</h1>
             <p className='text-xs py-2'>Welcome back, enter your credentials to continue.</p>
@@ -58,7 +63,7 @@ function Login() {
           <div className='flex justify-center items-center flex-col  w-full gap-5'>
             <div className='h-auto w-11/12 rounded-xl border p-2 focus-within:border-sky-200 focus-within:ring focus-within:ring-sky-300/30'>
               <label className='text-xs h-0 px-2'>Email</label>
-              <input className=' h-auto text-xs px-2 w-full outline-none rounded-xl bg-black' 
+              <input className=' h-auto text-xs px-2 w-full outline-none rounded-xl' 
                 type='email' 
                 name='email' 
                 value={email}
@@ -68,7 +73,7 @@ function Login() {
             </div>
             <div className='h-auto w-11/12 rounded-xl border p-2 focus-within:border-sky-200 focus-within:ring focus-within:ring-sky-300/30'>
               <label className='text-xs h-0 px-2'>Password</label>
-              <input className=' h-auto text-xs px-2 w-full outline-none rounded-xl bg-black' 
+              <input className=' h-auto text-xs px-2 w-full outline-none rounded-xl bg-amber-100' 
                 type='password' 
                 name='password' 
                 value={password}
@@ -83,7 +88,7 @@ function Login() {
               <Link to="/register">
                 <button className='px-3 py-2 border rounded-lg'>Register</button>
               </Link>
-              <button className='px-3 py-2 border rounded-lg bg-white text-black font-semibold' onClick={handleLogin}>Login</button>
+              <button className='px-3 py-2  rounded-lg bg-white text-black font-semibold' onClick={handleLogin}>Login</button>
 
             </div>
 

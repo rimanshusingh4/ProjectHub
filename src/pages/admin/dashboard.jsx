@@ -1,8 +1,9 @@
 import React from 'react'
-
 function dashboard() {
+  
   return (
-    <div>Welcome to dashboard</div>
+    <div className='w-full h-full border rounded-3xl bg-red-600'>
+    </div>
   )
 }
 

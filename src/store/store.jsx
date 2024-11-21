@@ -1,32 +1,39 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import Cookies from "js-cookie"; // Optional for handling non-HTTP-only cookies
+import Cookies from "js-cookie";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(null); // Start as null to indicate "loading"
 
     useEffect(() => {
-        // Check if the auth cookie exists
+        // Initialize the auth state
         const token = Cookies.get("authcookie");
-        setIsLoggedIn(Boolean(token)); 
-        // console.log("Token",token)
-        // setIsLoggedIn(!!token);
+        setIsLoggedIn(Boolean(token));
 
-    }, [isLoggedIn]);
+        const adminStatus = Cookies.get("isAdmin");
+        setIsAdmin(adminStatus === "true"); // Ensure it's evaluated as a boolean
+    }, []);
 
     const storeToken = () => {
-        // No need to explicitly set cookie; server sets it during login
         setIsLoggedIn(true);
     };
 
+    const storeRole = () => {
+        Cookies.set("isAdmin", "true", { expires: 1 / 24 }); // Set for 1 hour
+        setIsAdmin(true);
+    };
+
     const logoutUser = () => {
-        Cookies.remove("authcookie"); // Remove the cookie
+        Cookies.remove("authcookie");
+        Cookies.remove("isAdmin");
         setIsLoggedIn(false);
+        setIsAdmin(false);
     };
 
     return (
-        <AuthContext.Provider value={{ storeToken, logoutUser, isLoggedIn }}>
+        <AuthContext.Provider value={{ storeToken, storeRole, isAdmin, logoutUser, isLoggedIn }}>
             {children}
         </AuthContext.Provider>
     );

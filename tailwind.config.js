@@ -7,6 +7,11 @@ export default {
   ],
   theme: {
   	extend: {
+		fontFamily: {
+			pac: ["pacifico"],
+			osw: ["oswald"],
+			abel: ["abel"],
+		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
