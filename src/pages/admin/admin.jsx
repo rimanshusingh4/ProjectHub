@@ -25,6 +25,7 @@ function Admin() {
           if(data){
             setProfileData(data);
           }
+          console.log("API Response Data:", data);
         } catch (error) {
           console.error("Error fetching user data:", error);
         }

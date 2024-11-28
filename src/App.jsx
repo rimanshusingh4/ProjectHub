@@ -15,6 +15,8 @@ import Dashboard from './pages/admin/dashboard'
 import AdminProfile from './pages/admin/adminProfile'
 import Project from './pages/admin/projects'
 import { useEffect } from 'react'
+import AllProjects from './pages/AllProjects'
+import ProjectDetail from './pages/ProjectDetail'
 
 // Configure axios to always send cookies in requests
 axios.defaults.withCredentials = true;
@@ -47,6 +49,8 @@ function App() {
           <Route path='profile' element={<AdminProfile/>} />
           <Route path='project' element={<Project/>}/>
         </Route>
+        <Route path='projects' element={<AllProjects/>}/>
+        <Route path='projectDetails/:projectId' element={<ProjectDetail/>}/>
         <Route path='logout' element={<Logout/>}/>
       </Routes>
     </div>

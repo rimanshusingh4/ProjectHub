@@ -57,7 +57,7 @@ function Projects() {
           + Add Project
         </button>
       </div>
-      <div className="w-full flex flex-wrap justify-center items-center p-4">
+      <div className="cards flex flex-wrap w-full justify-around h-auto">
         {projects.length > 0 ? (
           projects.map((project) => <Cards key={project._id} project={project} />)
         ) : (
