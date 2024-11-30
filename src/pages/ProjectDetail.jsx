@@ -6,8 +6,6 @@ import ReactPlayer from 'react-player'
 function ProjectDetails() {
   const { projectId } = useParams();
   const [project, setProject] = useState(null);
-  // console.log(projectId)
-  const videoLink = "http://res.cloudinary.com/dja9v00xx/video/upload/v1721415660/p9hyxrizfqntaje6kgxn.mp4"
   useEffect( ()=>{ 
       const fetchProject = async () => {
       // Fetch project data from the backend
@@ -37,17 +35,19 @@ function ProjectDetails() {
         </div>
 
         <div className="w-9/12 h-[30rem] rounded-3xl bg-red-500">
-          <ReactPlayer url={videoLink} controls={true} width="100%" height="100%" />
+          <ReactPlayer url={project.demoVideo} controls={true} width="100%" height="100%" />
         </div>
 
         <div className="w-9/12 h-auto">
-          <h1 className="text-3xl font-normal font-abel flex flex-wrap my-6">Tech Stack </h1>
+          <h1 className="text-3xl font-normal font-abel flex flex-wrap my-6">Tech Stack :</h1>{project.techStack}
         </div>
 
         <div className="flex justify-start flex-col gap-6 w-9/12">
+          <a href={project.liveLink}>
           <div className="w-36 gap-5 h-auto flex flex-col">
             <button className="text-xl bg-white rounded-2xl p-3 text-amber-500">Live Preview</button>
           </div>
+          </a>
           <div className="w-36 gap-5 h-auto flex flex-col">
           <a href={project.file.url}>
             <button className="text-xl w-full bg-amber-500 rounded-2xl p-3">
